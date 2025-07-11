@@ -1,22 +1,28 @@
-from config import PASSWORD_CONFIGS as cg
+from config import PASSWORD_CONFIGS
+
+_use_digits = PASSWORD_CONFIGS.get('use_digits')
+_use_lower = PASSWORD_CONFIGS.get('use_lower')
+_use_upper = PASSWORD_CONFIGS.get('use_upper')
+_use_special = PASSWORD_CONFIGS.get('use_special')
+_length = PASSWORD_CONFIGS.get('length')
 
 class PasswordGenerator:
-    def __init__(self, use_digits = cg.get('use_digits'), use_lower = cg.get('use_lower'), use_upper = cg.get('use_upper'), use_special = cg.get('use_special'), length = cg.get('length')):
-        self.use_digits = use_digits
-        self.use_lower = use_lower
-        self.use_upper = use_upper
-        self.use_special = use_special
+    def __init__(self, digits = _use_digits, lower = _use_lower, upper = _use_upper, special = _use_special, length = _length):
+        self.digits = digits
+        self.lower = lower
+        self.upper = upper
+        self.special = special
         self.length = length
 
-        # generating password
+        # generating password        
         self.generate()
 
 
     def generate(self):
-        print(self.use_digits)
-        print(self.use_lower)
-        print(self.use_upper)
-        print(self.use_special)
+        print(self.digits)
+        print(self.lower)
+        print(self.upper)
+        print(self.special)
         print(self.length)
 
 
