@@ -19,19 +19,17 @@ class PasswordGenerator:
 
         # generating password        
         self.generate()
+    
 
-
-    def generate(self):
-        # Phase 1: generating character sets
-
+    def character_sets(self):
         # Character sets list
         character_sets = []
 
         # a dictionary with all instance variables and their values
         variables = vars(self)
 
-        # Extracting password length from instance variables
-        password_length = variables.pop('length')
+        # Removing `length` key from dictionary
+        del variables['length']
 
         # Generating sets
         for key, value in variables.items():
@@ -57,5 +55,13 @@ class PasswordGenerator:
         # Deleting instance variables dictionary for memory management
         del variables
 
+        return character_sets
 
-p1 = PasswordGenerator()
+
+    def generate(self):
+        # Phase 1: generating character sets
+        character_sets = self.character_sets()
+        print(*character_sets, sep='\n')
+
+
+p1 = PasswordGenerator(True, True, True, True, 10)
